@@ -1,11 +1,11 @@
 import requests
 
 from characters.models import Character
-from rick_and_morty_api.settings import RICK_AND_MORTY_API_CHARACTERS_URL
+from django.conf import settings
 
 
 def scrape_characters() -> list[Character]:
-    url_to_scrape_next = RICK_AND_MORTY_API_CHARACTERS_URL
+    url_to_scrape_next = settings.RICK_AND_MORTY_API_CHARACTERS_URL
     characters = []
     while url_to_scrape_next is not None:
         characters_response = requests.get(url_to_scrape_next).json()
