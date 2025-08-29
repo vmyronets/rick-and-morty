@@ -10,5 +10,5 @@ urlpatterns = [
         get_random_character_view,
         name="character-random"
     ),
-    path("characters/", CharacterListView.as_view(), name="character-list")
+    path("characters/", CharacterListView.as_view(), name="character-list"),
 ]
