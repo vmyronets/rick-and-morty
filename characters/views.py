@@ -11,8 +11,7 @@ from characters.models import Character
 from characters.serializers import CharacterSerializer
 
 
-@extend_schema(
-    responses={status.HTTP_200_OK: CharacterSerializer})
+@extend_schema(responses={status.HTTP_200_OK: CharacterSerializer})
 @api_view(['GET'])
 def get_random_character_view(request: Request) -> Response:
     """Get a random character."""
@@ -27,6 +26,7 @@ class CharacterListView(generics.ListAPIView):
     serializer_class = CharacterSerializer
 
     def get_queryset(self) -> QuerySet:
+        """Filter characters by name."""
         queryset = Character.objects.all()
 
         name = self.request.query_params.get("name")

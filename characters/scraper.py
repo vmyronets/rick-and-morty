@@ -6,6 +6,7 @@ from django.conf import settings
 
 
 def scrape_characters() -> list[Character]:
+    """Scrape characters from Rick and Morty API."""
     url_to_scrape_next = settings.RICK_AND_MORTY_API_CHARACTERS_URL
     characters = []
     while url_to_scrape_next is not None:
@@ -27,6 +28,7 @@ def scrape_characters() -> list[Character]:
 
 
 def save_characters(characters: list[Character]) -> None:
+    """Save characters to the DB."""
     for character in characters:
         try:
             character.save()
@@ -38,5 +40,6 @@ def save_characters(characters: list[Character]) -> None:
 
 
 def sync_characters_with_api() -> None:
+    """Sync characters with Rick and Morty API."""
     characters = scrape_characters()
     save_characters(characters)
