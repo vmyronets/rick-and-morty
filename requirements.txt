@@ -24,6 +24,9 @@ jsonschema-specifications==2025.4.1
 kombu==5.5.4
 packaging==25.0
 prompt_toolkit==3.0.52
+psycopg==3.2.9
+psycopg-binary==3.2.9
+psycopg-pool==3.2.6
 python-crontab==3.3.0
 python-dateutil==2.9.0.post0
 python-dotenv==1.1.1
