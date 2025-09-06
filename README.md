@@ -12,7 +12,18 @@
 3. Python, Django/Flask/FastAPI, ORM, PostgreSQL, Git.
 4. All endpoints should be documented via Swagger.
 
-### How to run:
+## Getting started
+
+### Installing with Docker:
+- Clone the repo: `git clone https://github.com/vmyronets/rick_and_morty_api.git`
+- Go to the project directory: `cd rick_and_morty_api`
+- Rename `env_sample` to `.env` and fill in the values
+- Run `docker-compose up --build`
+- Create an admin user and create a schedule for running sync in DB
+
+### Installing locally:
+- Clone the repo: `git clone https://github.com/vmyronets/rick_and_morty_api.git`
+- Go to the project directory: `cd rick_and_morty_api`
 - Create virtual environment: `python -m venv venv`
 - Activate virtual environment: `venv\Scripts\activate` on Windows, `source venv/bin/activate` on Linux or MacOS.
 - Install dependencies: `pip install -r requirements.txt`
@@ -25,4 +36,3 @@
 - Run Celery beat for tasks scheduling: `celery -A rick_and_morty beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler`
 - Create a schedule for running sync in DB
 - Run app in Django server: `python manage.py runserver`
-
