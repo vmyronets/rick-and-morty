@@ -8,6 +8,7 @@ from rest_framework.request import Request
 from rest_framework import status, generics
 
 from characters.models import Character
+from characters.pagination import CharacterListPagination
 from characters.serializers import CharacterSerializer
 
 
@@ -24,6 +25,7 @@ def get_random_character_view(request: Request) -> Response:
 
 class CharacterListView(generics.ListAPIView):
     serializer_class = CharacterSerializer
+    pagination_class = CharacterListPagination
 
     def get_queryset(self) -> QuerySet:
         """Filter characters by name."""

@@ -28,15 +28,11 @@ def scrape_characters() -> list[Character]:
 
 
 def save_characters(characters: list[Character]) -> None:
-    """Save characters to the DB."""
-    for character in characters:
-        try:
-            character.save()
-        except IntegrityError:
-            print(
-                f"Character with api_id: {character.api_id} "
-                f"already exists in the DB!"
-            )
+    """Save characters to the DB in bulk."""
+    Character.objects.bulk_create(
+        # skips duplicates based on unique constraint
+        characters, ignore_conflicts=True
+    )
 
 
 def sync_characters_with_api() -> None:
